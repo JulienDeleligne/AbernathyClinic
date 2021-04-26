@@ -3,12 +3,14 @@ package com.AbernathyClinic.patientservice.dto;
 import java.util.Date;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 
 @Data
 @Validated
+@Builder
 public class PatientDto {
 
   private String family;
