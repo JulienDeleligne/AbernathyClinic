@@ -1,9 +1,8 @@
-package com.AbernathyClinic.patientservice.web.controller;
+package com.abernathyclinic.patientservice.web.controller;
 
-import com.AbernathyClinic.patientservice.dto.PatientDto;
-import com.AbernathyClinic.patientservice.dto.convertor.PatientConvertor;
-import com.AbernathyClinic.patientservice.model.Patient;
-import com.AbernathyClinic.patientservice.service.PatientService;
+import com.abernathyclinic.patientservice.dto.PatientDto;
+import com.abernathyclinic.patientservice.dto.convertor.PatientConvertor;
+import com.abernathyclinic.patientservice.service.PatientService;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;

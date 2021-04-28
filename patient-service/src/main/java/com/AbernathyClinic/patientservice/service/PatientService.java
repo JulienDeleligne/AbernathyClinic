@@ -1,7 +1,7 @@
-package com.AbernathyClinic.patientservice.service;
+package com.abernathyclinic.patientservice.service;
 
-import com.AbernathyClinic.patientservice.model.Patient;
-import com.AbernathyClinic.patientservice.repository.PatientRepository;
+import com.abernathyclinic.patientservice.model.Patient;
+import com.abernathyclinic.patientservice.repository.PatientRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

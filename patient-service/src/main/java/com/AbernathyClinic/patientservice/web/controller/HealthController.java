@@ -1,4 +1,4 @@
-package com.AbernathyClinic.patientservice.web.controller;
+package com.abernathyclinic.patientservice.web.controller;
 
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;

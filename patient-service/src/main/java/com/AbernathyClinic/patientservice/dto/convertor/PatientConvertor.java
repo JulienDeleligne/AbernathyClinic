@@ -1,12 +1,13 @@
-package com.AbernathyClinic.patientservice.dto.convertor;
+package com.abernathyclinic.patientservice.dto.convertor;
 
-import com.AbernathyClinic.patientservice.dto.PatientDto;
-import com.AbernathyClinic.patientservice.model.Patient;
+import com.abernathyclinic.patientservice.dto.PatientDto;
+import com.abernathyclinic.patientservice.model.Patient;
 
 public class PatientConvertor {
 
   public PatientDto convertToPatientDto(Patient patient) {
-    return PatientDto.builder().id(patient.getId()).family(patient.getFamily()).given(patient.getGiven()).dob(patient.getBirthdate())
+    return PatientDto.builder().id(patient.getId()).family(patient.getFamily()).given(patient.getGiven())
+        .dob(patient.getBirthdate())
         .sex(patient.getSex())
         .address(patient.getAddress()).phone(patient.getPhone()).build();
   }

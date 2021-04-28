@@ -1,4 +1,4 @@
-package com.AbernathyClinic.configserver;
+package com.abernathyclinic.configserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.AbernathyClinic.patientservice;
+package com.abernathyclinic.patientservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

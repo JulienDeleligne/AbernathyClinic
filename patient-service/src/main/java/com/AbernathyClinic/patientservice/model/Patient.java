@@ -1,4 +1,4 @@
-package com.AbernathyClinic.patientservice.model;
+package com.abernathyclinic.patientservice.model;
 
 import java.time.LocalDate;
 import javax.persistence.Column;

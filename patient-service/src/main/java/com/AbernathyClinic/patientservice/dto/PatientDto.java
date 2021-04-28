@@ -1,4 +1,4 @@
-package com.AbernathyClinic.patientservice.dto;
+package com.abernathyclinic.patientservice.dto;
 
 import java.time.LocalDate;
 import javax.validation.constraints.PastOrPresent;

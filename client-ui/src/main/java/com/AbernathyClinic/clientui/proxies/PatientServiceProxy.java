@@ -1,6 +1,6 @@
-package com.AbernathyClinic.clientui.proxies;
+package com.abernathyclinic.clientui.proxies;
 
-import com.AbernathyClinic.clientui.beans.PatientBean;
+import com.abernathyclinic.clientui.beans.PatientBean;
 import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;

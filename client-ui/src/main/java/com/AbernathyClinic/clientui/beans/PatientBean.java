@@ -1,4 +1,4 @@
-package com.AbernathyClinic.clientui.beans;
+package com.abernathyclinic.clientui.beans;
 
 import java.time.LocalDate;
 import javax.validation.constraints.PastOrPresent;

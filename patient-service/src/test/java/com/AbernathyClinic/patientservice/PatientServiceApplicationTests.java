@@ -1,4 +1,4 @@
-package com.AbernathyClinic.patientservice;
+package com.abernathyclinic.patientservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
