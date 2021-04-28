@@ -1,7 +1,7 @@
-package com.AbernathyClinic.clientui.controller;
+package com.abernathyclinic.clientui.controller;
 
-import com.AbernathyClinic.clientui.beans.PatientBean;
-import com.AbernathyClinic.clientui.proxies.PatientServiceProxy;
+import com.abernathyclinic.clientui.beans.PatientBean;
+import com.abernathyclinic.clientui.proxies.PatientServiceProxy;
 import java.time.LocalDate;
 import javax.validation.Valid;
 import org.slf4j.Logger;
@@ -13,13 +13,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ClientController {
 
-  Logger log = LoggerFactory.getLogger(this.getClass());
+  final Logger log = LoggerFactory.getLogger(this.getClass());
   @Autowired
   private PatientServiceProxy patientServiceProxy;
 
