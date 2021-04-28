@@ -1,14 +1,16 @@
 package com.AbernathyClinic.patientservice.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @Entity
@@ -18,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Patient {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
   @Column
@@ -26,7 +28,8 @@ public class Patient {
   @Column
   private String given;
   @Column
-  private Date birthdate;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+  private LocalDate birthdate;
   @Column
   private String sex;
   @Column

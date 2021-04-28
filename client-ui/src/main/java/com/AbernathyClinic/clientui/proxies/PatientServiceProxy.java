@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "patient-service", url = "localhost:8081")
@@ -21,7 +22,7 @@ public interface PatientServiceProxy {
   @PostMapping(value = "/add")
   PatientBean save(@RequestBody PatientBean patient);
 
-  @PostMapping(value = "/update/{id}")
+  @PutMapping(value = "/update/{id}")
   PatientBean update(@RequestBody PatientBean patient, @PathVariable Integer id);
 
   @DeleteMapping(value = "/delete/{id}")

@@ -6,7 +6,7 @@ import com.AbernathyClinic.patientservice.model.Patient;
 public class PatientConvertor {
 
   public PatientDto convertToPatientDto(Patient patient) {
-    return PatientDto.builder().family(patient.getFamily()).given(patient.getGiven()).dob(patient.getBirthdate())
+    return PatientDto.builder().id(patient.getId()).family(patient.getFamily()).given(patient.getGiven()).dob(patient.getBirthdate())
         .sex(patient.getSex())
         .address(patient.getAddress()).phone(patient.getPhone()).build();
   }

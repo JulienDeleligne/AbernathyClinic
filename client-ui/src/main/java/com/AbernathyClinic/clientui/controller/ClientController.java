@@ -2,7 +2,7 @@ package com.AbernathyClinic.clientui.controller;
 
 import com.AbernathyClinic.clientui.beans.PatientBean;
 import com.AbernathyClinic.clientui.proxies.PatientServiceProxy;
-import java.util.List;
+import java.time.LocalDate;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,26 +13,28 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ClientController {
 
+  Logger log = LoggerFactory.getLogger(this.getClass());
   @Autowired
   private PatientServiceProxy patientServiceProxy;
-
-  Logger log = LoggerFactory.getLogger(this.getClass());
 
   @RequestMapping("/")
   public String accueil(Model model) {
     log.info("Request to patient-service");
     model.addAttribute("patients", patientServiceProxy.patientList());
+    model.addAttribute("localDate", LocalDate.now());
     return "list";
   }
 
   @RequestMapping("/list")
   public String home(Model model) {
     model.addAttribute("patients", patientServiceProxy.patientList());
+    model.addAttribute("localDate", LocalDate.now());
     return "list";
   }
 
@@ -43,12 +45,12 @@ public class ClientController {
 
   @PostMapping("/validate")
   public String validate(@Valid PatientBean patient, BindingResult result, Model model) {
-    if (!result.hasErrors()) {
-      patientServiceProxy.save(patient);
-      model.addAttribute("patients", patientServiceProxy.patientList());
-      return "redirect:/list";
+    if (result.hasErrors()) {
+      return "add";
     }
-    return "add";
+    patientServiceProxy.save(patient);
+    model.addAttribute("patients", patientServiceProxy.patientList());
+    return "redirect:/list";
   }
 
   @GetMapping("/update/{id}")
@@ -68,7 +70,7 @@ public class ClientController {
     return "redirect:/list";
   }
 
-  @GetMapping("/bidList/delete/{id}")
+  @GetMapping("/delete/{id}")
   public String deleteBid(@PathVariable("id") Integer id, Model model) {
     patientServiceProxy.delete(id);
     model.addAttribute("patients", patientServiceProxy.patientList());

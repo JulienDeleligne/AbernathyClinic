@@ -5,6 +5,7 @@ import com.AbernathyClinic.patientservice.dto.convertor.PatientConvertor;
 import com.AbernathyClinic.patientservice.model.Patient;
 import com.AbernathyClinic.patientservice.service.PatientService;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,8 +24,9 @@ public class PatientController {
   private PatientService patientService;
 
   @GetMapping(value = "/patients")
-  public List<Patient> patientsList() {
-    return patientService.getAllPatient();
+  public List<PatientDto> patientsList() {
+    return patientService.getAllPatient().stream().map(patientConvertor::convertToPatientDto).collect(
+        Collectors.toList());
   }
 
   @GetMapping(value = "/patient/{id}")

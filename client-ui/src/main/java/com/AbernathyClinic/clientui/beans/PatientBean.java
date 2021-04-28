@@ -1,10 +1,11 @@
 package com.AbernathyClinic.clientui.beans;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 public class PatientBean {
@@ -13,7 +14,8 @@ public class PatientBean {
   private String family;
   private String given;
   @PastOrPresent(message = "The date of birth must be in the past")
-  private Date dob;
+  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+  private LocalDate dob;
   @Pattern(message = "The sex must be either M or F", regexp = "^[MF]$")
   private String sex;
   private String address;

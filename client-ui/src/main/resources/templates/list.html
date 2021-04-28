@@ -29,13 +29,14 @@
         <th>Sex</th>
         <th>Address</th>
         <th>Phone</th>
+        <th>Action</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each='patients : ${patients}'>
         <td th:text='${patients.family}'></td>
         <td th:text='${patients.given}'></td>
-        <td th:text='${patients.dob}'></td>
+        <td th:text='${#temporals.format(patients.dob,"yyyy-MM-dd")}'></td>
         <td th:text='${patients.sex}'></td>
         <td th:text='${patients.address}'></td>
         <td th:text='${patients.phone}'></td>
