@@ -10,11 +10,8 @@
 <body>
 <div class='container'>
   <div class='row'>
-    <div class='col-6 text-right'>
-      Logged in user: <b class='user' th:inline='text'> [[${#httpServletRequest.remoteUser}]] </b>
-      <form method='POST' th:action='@{/app-logout}'>
-        <input type='submit' value='Logout'/>
-      </form>
+    <div class='col-6'>
+      <a href='/home'>Menu</a>
     </div>
   </div>
   <div class='row'><h2>Patient List</h2></div>

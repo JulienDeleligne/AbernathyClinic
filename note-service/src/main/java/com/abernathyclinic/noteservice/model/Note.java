@@ -13,7 +13,7 @@ import org.springframework.data.annotation.Id;
 public class Note {
 
   @Id
-  private Integer id;
+  private String id;
   private Integer patId;
   private String patient;
   private String recommendations;

@@ -24,7 +24,7 @@ public class NoteController {
   private NoteService noteService;
 
   @GetMapping(value = "/note/{id}")
-  public NoteDto findNoteById(@PathVariable Integer id) {
+  public NoteDto findNoteById(@PathVariable String id) {
     return noteConvertor.convertToNoteDto(noteService.findNoteById(id));
   }
 
@@ -47,12 +47,12 @@ public class NoteController {
   }
 
   @PutMapping(value = "/note/update/{id}")
-  public NoteDto update(@Valid @RequestBody NoteDto note, @PathVariable Integer id) {
+  public NoteDto update(@Valid @RequestBody NoteDto note, @PathVariable String id) {
     return noteConvertor.convertToNoteDto(noteService.update(noteConvertor.convertToNote(note), id));
   }
 
   @DeleteMapping(value = "/note/delete/{id}")
-  public void delete(@PathVariable Integer id) {
+  public void delete(@PathVariable String id) {
     noteService.deleteById(id);
   }
 }

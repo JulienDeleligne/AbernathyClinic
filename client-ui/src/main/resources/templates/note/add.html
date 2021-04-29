@@ -10,58 +10,24 @@
 <div class='container'>
 
   <div class='row'>
-    <h2>Add New Patient</h2>
+    <h2>Add New Note</h2>
   </div>
-
   <div class='row'>
-    <form action='#' class='form-horizontal' method='post' style='width: 100%' th:action='@{/patient/validate}'
-          th:object='${patientBean}'>
+    <form action='#' class='form-horizontal' method='post' style='width: 100%' th:action='@{/note/validate/{patId}(patId=${patId})}'
+          th:object='${noteBean}'>
       <div class='form-group'>
-        <label class='col-sm-2 control-label' for='family'>Family</label>
+        <label class='col-sm-2 control-label' for='recommendations'>Recommendations</label>
         <div class='col-sm-10'>
-          <input class='col-4' id='family' placeholder='Family' th:field='*{family}' type='text'>
-          <p class='text-danger' th:errors='*{family}' th:if="${#fields.hasErrors('family')}"></p>
+          <input class='col-4' id='recommendations' placeholder='Recommendations' th:field='*{recommendations}' type='text'>
+          <p class='text-danger' th:errors='*{recommendations}' th:if="${#fields.hasErrors('recommendations')}"></p>
         </div>
       </div>
-      <div class='form-group'>
-        <label class='col-sm-2 control-label' for='given'>Given</label>
-        <div class='col-sm-10'>
-          <input class='col-4' id='given' placeholder='given' th:field='*{given}' type='text'>
-          <p class='text-danger' th:errors='*{given}' th:if="${#fields.hasErrors('given')}"></p>
-        </div>
-      </div>
-      <div class='form-group'>
-        <label class='col-sm-2 control-label' for='dob'>DOB</label>
-        <div class='col-sm-10'>
-          <input class='col-4' id='dob' placeholder='DOB' th:field='*{dob}' type='date'>
-          <p class='text-danger' th:errors='*{dob}' th:if="${#fields.hasErrors('dob')}"></p>
-        </div>
-      </div>
-      <div class='form-group'>
-        <label class='col-sm-2 control-label' for='sex'>Sex</label>
-        <div class='col-sm-10'>
-          <input class='col-4' id='sex' placeholder='Sex' th:field='*{sex}' type='text'>
-          <p class='text-danger' th:errors='*{dob}' th:if="${#fields.hasErrors('sex')}"></p>
-        </div>
-      </div>
-      <div class='form-group'>
-        <label class='col-sm-2 control-label' for='address'>Address</label>
-        <div class='col-sm-10'>
-          <input class='col-4' id='address' placeholder='Address' th:field='*{address}' type='text'>
-          <p class='text-danger' th:errors='*{address}' th:if="${#fields.hasErrors('address')}"></p>
-        </div>
-      </div>
-      <div class='form-group'>
-        <label class='col-sm-2 control-label' for='phone'>Phone</label>
-        <div class='col-sm-10'>
-          <input class='col-4' id='phone' placeholder='Phone' th:field='*{phone}' type='text'>
-          <p class='text-danger' th:errors='*{phone}' th:if="${#fields.hasErrors('phone')}"></p>
-        </div>
-      </div>
+      <input type="hidden" id="patId" th:field='*{patId}' th:value='${patId}'>
+      <input type="hidden" id="patient" th:field='*{patient}' th:value='${patient}'>
       <div class='form-group'>
         <div class='col-sm-12'>
-          <a class='btn btn-danger btn-sm' href='/patient/list'>Cancel</a>
-          <input class='btn btn-primary btn-sm' type='submit' value='Add Patient'>
+          <a class='btn btn-danger btn-sm' th:href='@{/note/list/patId/{patId}(patId=${patId})}'>Cancel</a>
+          <input class='btn btn-primary btn-sm' type='submit' value='Add Note'>
         </div>
       </div>
     </form>

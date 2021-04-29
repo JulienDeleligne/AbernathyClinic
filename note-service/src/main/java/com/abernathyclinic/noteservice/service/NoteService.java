@@ -17,7 +17,7 @@ public class NoteService {
     return noteRepository.findAll();
   }
 
-  public Note findNoteById(Integer id) {
+  public Note findNoteById(String id) {
     Assert.notNull(id, "id must not be null");
     return noteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Note Id:" + id));
   }
@@ -37,7 +37,7 @@ public class NoteService {
     return noteRepository.save(note);
   }
 
-  public Note update(Note noteToUpdate, Integer id) {
+  public Note update(Note noteToUpdate, String id) {
     Assert.notNull(noteToUpdate, "Note must not be null");
     var note = findNoteById(id);
     note.setPatId(noteToUpdate.getPatId());
@@ -46,7 +46,7 @@ public class NoteService {
     return save(note);
   }
 
-  public void deleteById(Integer id) {
+  public void deleteById(String id) {
     Assert.notNull(id, "id must not be null");
     noteRepository.deleteById(findNoteById(id).getId());
   }

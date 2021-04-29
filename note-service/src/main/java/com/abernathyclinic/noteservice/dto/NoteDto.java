@@ -8,7 +8,7 @@ import org.springframework.validation.annotation.Validated;
 @Builder
 public class NoteDto {
 
-  private Integer id;
+  private String id;
   private Integer patId;
   private String patient;
   private String recommendations;
