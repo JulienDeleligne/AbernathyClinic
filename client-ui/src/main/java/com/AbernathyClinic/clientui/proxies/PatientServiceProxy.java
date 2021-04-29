@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "patient-service", url = "localhost:8081")
 public interface PatientServiceProxy {
 
-  @GetMapping(value = "/patients")
+  @GetMapping(value = "/patient")
   List<PatientBean> patientList();
 
   @GetMapping(value = "/patient/{id}")
   PatientBean findPatientById(@PathVariable Integer id);
 
-  @PostMapping(value = "/add")
+  @PostMapping(value = "/patient/add")
   PatientBean save(@RequestBody PatientBean patient);
 
-  @PutMapping(value = "/update/{id}")
+  @PutMapping(value = "/patient/update/{id}")
   PatientBean update(@RequestBody PatientBean patient, @PathVariable Integer id);
 
-  @DeleteMapping(value = "/delete/{id}")
+  @DeleteMapping(value = "/patient/delete/{id}")
   void delete(@PathVariable Integer id);
 }

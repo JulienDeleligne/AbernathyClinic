@@ -5,7 +5,7 @@
 <head>
   <meta charset='utf-8'/>
   <title>Home</title>
-  <link href='/css/bootstrap.min.css' rel='stylesheet'>
+  <link href='/../css/bootstrap.min.css' rel='stylesheet'>
 </head>
 <body>
 <div class='container'>
@@ -19,10 +19,11 @@
   </div>
   <div class='row'><h2>Patient List</h2></div>
   <div class='row'>
-    <a class='btn btn-primary btn-sm' href='/add'>Add New</a>
+    <a class='btn btn-primary btn-sm' href='/patient/add'>Add New</a>
     <table class='table table-bordered'>
       <thead>
       <tr>
+        <th>Id</th>
         <th>Family</th>
         <th>Given</th>
         <th>Dob</th>
@@ -34,6 +35,7 @@
       </thead>
       <tbody>
       <tr th:each='patients : ${patients}'>
+        <td th:text='${patients.id}'></td>
         <td th:text='${patients.family}'></td>
         <td th:text='${patients.given}'></td>
         <td th:text='${#temporals.format(patients.dob,"yyyy-MM-dd")}'></td>
@@ -41,8 +43,8 @@
         <td th:text='${patients.address}'></td>
         <td th:text='${patients.phone}'></td>
         <td class='text-center' style='width: 15%'>
-          <a th:href='@{/update/{id}(id=${patients.id})}'>Edit</a>&nbsp;|&nbsp;
-          <a th:href='@{/delete/{id}(id=${patients.id})}'>Delete</a>
+          <a th:href='@{/patient/update/{id}(id=${patients.id})}'>Edit</a>&nbsp;|&nbsp;
+          <a th:href='@{/patient/delete/{id}(id=${patients.id})}'>Delete</a>
         </td>
       </tr>
       </tbody>
