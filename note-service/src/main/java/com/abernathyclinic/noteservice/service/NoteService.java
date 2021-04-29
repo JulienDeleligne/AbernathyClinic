@@ -19,7 +19,8 @@ public class NoteService {
 
   public Note findNoteById(Integer id) {
     Assert.notNull(id, "id must not be null");
-    return noteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Note Id:" + id));
+    //return noteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Note Id:" + id));
+    return noteRepository.findOne(id);
   }
 /*
   public Note findNoteByPatient(String patient) {
