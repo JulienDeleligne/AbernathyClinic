@@ -1,12 +1,11 @@
-package com.abernathyclinic.noteservice.dto;
+package com.abernathyclinic.clientui.beans;
 
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.validation.annotation.Validated;
 
 @Data
 @Builder
-public class NoteDto {
+public class NoteBean {
 
   private Integer id;
   private Integer patId;
@@ -14,4 +13,3 @@ public class NoteDto {
   private String recommendations;
 
 }
-

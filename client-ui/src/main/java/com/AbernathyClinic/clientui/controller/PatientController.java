@@ -2,7 +2,6 @@ package com.abernathyclinic.clientui.controller;
 
 import com.abernathyclinic.clientui.beans.PatientBean;
 import com.abernathyclinic.clientui.proxies.PatientServiceProxy;
-import java.time.LocalDate;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +35,7 @@ public class PatientController {
   }
 
   @GetMapping("/patient/add")
-  public String addBidForm(PatientBean patient) {
+  public String addPatientForm(PatientBean patient) {
     return "patient/add";
   }
 

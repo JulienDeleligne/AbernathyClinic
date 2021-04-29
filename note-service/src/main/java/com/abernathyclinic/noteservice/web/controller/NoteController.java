@@ -23,34 +23,35 @@ public class NoteController {
   @Autowired
   private NoteService noteService;
 
-  @GetMapping(value = "/notes")
-  public List<NoteDto> notesList() {
-    return noteService.getAllNote().stream().map(noteConvertor::convertToNoteDto).collect(
-        Collectors.toList());
-  }
-
   @GetMapping(value = "/note/{id}")
   public NoteDto findNoteById(@PathVariable Integer id) {
     return noteConvertor.convertToNoteDto(noteService.findNoteById(id));
   }
 
-  /*
-  @GetMapping(value = "/note/{patient}")
-  public NoteDto findNoteByPatient(@PathVariable String patient) {
-    return noteConvertor.convertToNoteDto(noteService.findNoteByPatient(patient));
-  }*/
+  @GetMapping(value = "/notes/patId/{patId}")
+  public List<NoteDto> findNotesByPatId(@PathVariable Integer patId) {
+    return noteService.findNotesByPatId(patId).stream().map(noteConvertor::convertToNoteDto)
+        .collect(Collectors.toList());
+  }
 
-  @PostMapping(value = "/add")
+
+  @GetMapping(value = "/notes/patient/{patient}")
+  public List<NoteDto> findNotesByPatient(@PathVariable String patient) {
+    return noteService.findNotesByPatient(patient).stream().map(noteConvertor::convertToNoteDto).collect(
+        Collectors.toList());
+  }
+
+  @PostMapping(value = "/note/add")
   public NoteDto save(@Valid @RequestBody NoteDto note) {
     return noteConvertor.convertToNoteDto(noteService.save(noteConvertor.convertToNote(note)));
   }
 
-  @PutMapping(value = "/update/{id}")
+  @PutMapping(value = "/note/update/{id}")
   public NoteDto update(@Valid @RequestBody NoteDto note, @PathVariable Integer id) {
     return noteConvertor.convertToNoteDto(noteService.update(noteConvertor.convertToNote(note), id));
   }
 
-  @DeleteMapping(value = "/delete/{id}")
+  @DeleteMapping(value = "/note/delete/{id}")
   public void delete(@PathVariable Integer id) {
     noteService.deleteById(id);
   }
