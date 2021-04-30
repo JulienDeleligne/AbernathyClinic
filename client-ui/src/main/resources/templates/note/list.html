@@ -22,14 +22,12 @@
     <table class='table table-bordered'>
       <thead>
       <tr>
-        <th>Note's Id</th>
         <th>Recommendations</th>
         <th>Action</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each='note : ${notes}'>
-        <td th:text='${note.id}'></td>
         <td th:text='${note.recommendations}'></td>
         <td class='text-center' style='width: 15%'>
           <a th:href='@{/note/update/{id}(id=${note.id})}'>Edit</a>&nbsp;|&nbsp;

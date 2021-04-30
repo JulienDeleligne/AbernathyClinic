@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class NoteController {
@@ -21,22 +22,32 @@ public class NoteController {
   @Autowired
   private NoteServiceProxy noteServiceProxy;
 
-  @RequestMapping("/note/list/patId/{patId}")
-  public String listNotePatId(@PathVariable("patId") Integer patId, Model model) {
+  @RequestMapping(value = "/note/list/patId/{patId}")
+  public String listNotePatIdPathVariable(@PathVariable Integer patId, Model model) {
     log.info("Request to note-service");
-    model.addAttribute("notes", noteServiceProxy.findNotesByPatId(patId));
+    var notes = noteServiceProxy.findNotesByPatId(patId);
+    model.addAttribute("notes", notes);
     return "note/list";
   }
 
-  @RequestMapping("/note/list/patient/{patient}")
-  public String listNotePatient(@PathVariable String patient, Model model) {
+  @RequestMapping(value = "/note/list/patId", params = "patId")
+  public String listNotePatId(@RequestParam Integer patId, Model model) {
+    log.info("Request to note-service");
+    var notes = noteServiceProxy.findNotesByPatId(patId);
+    model.addAttribute("notes", notes);
+    return "note/list";
+  }
+
+  @RequestMapping(value = "/note/list/patient", params = "patient")
+  public String listNotePatient(@RequestParam String patient, Model model) {
     model.addAttribute("notes", noteServiceProxy.findNotesByPatient(patient));
     return "note/list";
   }
 
-  @GetMapping("/note/add/{patId}")
-  public String addNoteForm(@PathVariable Integer patId, NoteBean note, Model model) {
+  @GetMapping("/note/add/{patId}/{patient}")
+  public String addNoteForm(@PathVariable Integer patId, @PathVariable String patient, NoteBean note, Model model) {
     model.addAttribute("patId", patId);
+    model.addAttribute("patient", patient);
     return "note/add";
   }
 
@@ -47,30 +58,30 @@ public class NoteController {
     }
     noteServiceProxy.save(note);
     model.addAttribute("notes", noteServiceProxy.findNotesByPatId(patId));
-    return "redirect:/note/list";
+    return "redirect:/note/list/patId/" + patId;
   }
 
   @GetMapping("/note/update/{id}")
-  public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+  public String showUpdateForm(@PathVariable("id") String id, Model model) {
     model.addAttribute("note", noteServiceProxy.findNoteById(id));
     return "note/update";
   }
 
   @PostMapping("/note/update/{id}")
-  public String updateBid(@PathVariable("id") Integer id, @Valid NoteBean note,
+  public String updateBid(@PathVariable("id") String id, @Valid NoteBean note,
       BindingResult result, Model model) {
     if (result.hasErrors()) {
       return "note/update";
     }
     noteServiceProxy.update(note, id);
     model.addAttribute("notes", noteServiceProxy.findNotesByPatId(note.getPatId()));
-    return "redirect:/note/list";
+    return "redirect:/note/list/patId/" + note.getPatId();
   }
 
   @GetMapping("/note/delete/{id}/{patId}")
-  public String deleteBid(@PathVariable("id") Integer id, @PathVariable("patId") Integer patId, Model model) {
+  public String deleteBid(@PathVariable("id") String id, @PathVariable("patId") Integer patId, Model model) {
     noteServiceProxy.delete(id);
     model.addAttribute("notes", noteServiceProxy.findNotesByPatId(patId));
-    return "redirect:/note/list";
+    return "redirect:/note/list/patId/" + patId;
   }
 }

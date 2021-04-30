@@ -13,17 +13,19 @@
     <h2>Add New Note</h2>
   </div>
   <div class='row'>
-    <form action='#' class='form-horizontal' method='post' style='width: 100%' th:action='@{/note/validate/{patId}(patId=${patId})}'
+    <form action='#' class='form-horizontal' method='post' style='width: 100%'
+          th:action='@{/note/validate/{patId}(patId=${patId})}'
           th:object='${noteBean}'>
       <div class='form-group'>
         <label class='col-sm-2 control-label' for='recommendations'>Recommendations</label>
         <div class='col-sm-10'>
-          <input class='col-4' id='recommendations' placeholder='Recommendations' th:field='*{recommendations}' type='text'>
+          <input class='col-4' id='recommendations' placeholder='Recommendations' th:field='*{recommendations}'
+                 type='text'>
           <p class='text-danger' th:errors='*{recommendations}' th:if="${#fields.hasErrors('recommendations')}"></p>
         </div>
       </div>
-      <input type="hidden" id="patId" th:field='*{patId}' th:value='${patId}'>
-      <input type="hidden" id="patient" th:field='*{patient}' th:value='${patient}'>
+      <input id='patId' th:field='*{patId}' th:value='${patId}' type='hidden'>
+      <input id='patient' th:field='*{patient}' th:value='${patient}' type='hidden'>
       <div class='form-group'>
         <div class='col-sm-12'>
           <a class='btn btn-danger btn-sm' th:href='@{/note/list/patId/{patId}(patId=${patId})}'>Cancel</a>

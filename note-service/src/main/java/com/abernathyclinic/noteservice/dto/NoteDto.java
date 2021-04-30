@@ -2,7 +2,6 @@ package com.abernathyclinic.noteservice.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.validation.annotation.Validated;
 
 @Data
 @Builder
