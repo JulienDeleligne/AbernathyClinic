@@ -27,6 +27,10 @@ public class PatientService {
     return patientRepository.save(patient);
   }
 
+  public void saves(List<Patient> patients) {
+    patientRepository.saveAll(patients);
+  }
+
   public Patient update(Patient patientToUpdate, Integer id) {
     Assert.notNull(patientToUpdate, "Patient must not be null");
     Patient patient = findPatientById(id);

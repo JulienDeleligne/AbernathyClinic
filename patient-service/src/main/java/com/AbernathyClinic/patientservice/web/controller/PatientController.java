@@ -18,29 +18,28 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PatientController {
 
-  private final PatientConvertor patientConvertor = new PatientConvertor();
   @Autowired
   private PatientService patientService;
 
   @GetMapping(value = "/patient")
   public List<PatientDto> patientList() {
-    return patientService.getAllPatient().stream().map(patientConvertor::convertToPatientDto).collect(
+    return patientService.getAllPatient().stream().map(PatientConvertor::convertToPatientDto).collect(
         Collectors.toList());
   }
 
   @GetMapping(value = "/patient/{id}")
   public PatientDto findPatientById(@PathVariable Integer id) {
-    return patientConvertor.convertToPatientDto(patientService.findPatientById(id));
+    return PatientConvertor.convertToPatientDto(patientService.findPatientById(id));
   }
 
   @PostMapping(value = "/patient/add")
   public PatientDto save(@Valid @RequestBody PatientDto patient) {
-    return patientConvertor.convertToPatientDto(patientService.save(patientConvertor.convertToPatient(patient)));
+    return PatientConvertor.convertToPatientDto(patientService.save(PatientConvertor.convertToPatient(patient)));
   }
 
   @PutMapping(value = "/patient/update/{id}")
   public PatientDto update(@Valid @RequestBody PatientDto patient, @PathVariable Integer id) {
-    return patientConvertor.convertToPatientDto(patientService.update(patientConvertor.convertToPatient(patient), id));
+    return PatientConvertor.convertToPatientDto(patientService.update(PatientConvertor.convertToPatient(patient), id));
   }
 
   @DeleteMapping(value = "/patient/delete/{id}")

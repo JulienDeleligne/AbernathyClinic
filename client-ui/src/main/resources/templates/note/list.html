@@ -23,12 +23,14 @@
       <thead>
       <tr>
         <th>Recommendations</th>
+        <th>Risk Level</th>
         <th>Action</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each='note : ${notes}'>
         <td th:text='${note.recommendations}'></td>
+        <td>Risk Level</td>
         <td class='text-center' style='width: 15%'>
           <a th:href='@{/note/update/{id}(id=${note.id})}'>Edit</a>&nbsp;|&nbsp;
           <a th:href='@{/note/delete/{id}/{patId}(id=${note.id}, patId=${note.patId})}'>Delete</a>
