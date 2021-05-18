@@ -1,7 +1,6 @@
 package com.AbernathyClinic.diabeticcalculatorservice.service;
 
 import com.AbernathyClinic.diabeticcalculatorservice.bean.NoteBean;
-import com.AbernathyClinic.diabeticcalculatorservice.bean.PatientBean;
 import com.AbernathyClinic.diabeticcalculatorservice.model.Patient;
 import com.AbernathyClinic.diabeticcalculatorservice.proxies.NoteServiceProxy;
 import com.AbernathyClinic.diabeticcalculatorservice.proxies.PatientServiceProxy;
@@ -31,8 +30,8 @@ public class DiabeticService {
   }
 
   public Patient assess(Integer patId) {
-    PatientBean patientBean = patientServiceProxy.findPatientById(patId);
-    Patient patient = Patient.builder().family(patientBean.getFamily()).given(patientBean.getGiven())
+    var patientBean = patientServiceProxy.findPatientById(patId);
+    var patient = Patient.builder().family(patientBean.getFamily()).given(patientBean.getGiven())
         .age(calculateAge(patientBean.getDob())).sex(patientBean.getSex()).build();
 
     List<NoteBean> noteBeans = noteServiceProxy.findNotesByPatId(patId);

@@ -11,4 +11,6 @@ public interface NoteServiceProxy {
 
   @GetMapping(value = "/notes/patId/{patId}")
   List<NoteBean> findNotesByPatId(@PathVariable Integer patId);
+
+
 }
