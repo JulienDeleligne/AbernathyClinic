@@ -13,10 +13,6 @@ public class NoteService {
   @Autowired
   private NoteRepository noteRepository;
 
-  public List<Note> getAllNote() {
-    return noteRepository.findAll();
-  }
-
   public Note findNoteById(String id) {
     Assert.notNull(id, "id must not be null");
     return noteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Note Id:" + id));

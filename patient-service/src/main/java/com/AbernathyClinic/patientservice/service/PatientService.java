@@ -33,7 +33,7 @@ public class PatientService {
 
   public Patient update(Patient patientToUpdate, Integer id) {
     Assert.notNull(patientToUpdate, "Patient must not be null");
-    Patient patient = findPatientById(id);
+    var patient = findPatientById(id);
     patient.setFamily(patientToUpdate.getFamily());
     patient.setGiven(patientToUpdate.getGiven());
     patient.setBirthdate(patientToUpdate.getBirthdate());

@@ -55,4 +55,6 @@ public class NoteController {
   public void delete(@PathVariable String id) {
     noteService.deleteById(id);
   }
+
+  // create endpoint init
 }

@@ -2,7 +2,6 @@ package com.AbernathyClinic.diabeticcalculatorservice.proxies;
 
 import com.AbernathyClinic.diabeticcalculatorservice.bean.PatientBean;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 

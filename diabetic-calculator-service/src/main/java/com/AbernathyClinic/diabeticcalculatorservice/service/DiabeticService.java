@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DiabeticService {
 
-  List<String> words = List
+  private final List<String> words = List
       .of("a1c", "microalbumine", "taille", "poids", "fumeur", "anormal", "cholestérol",
           "vertige", "rechute", "réaction", "anticorps");
   @Autowired

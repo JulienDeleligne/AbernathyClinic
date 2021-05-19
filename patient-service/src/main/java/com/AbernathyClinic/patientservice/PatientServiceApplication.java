@@ -1,7 +1,6 @@
 package com.abernathyclinic.patientservice;
 
 import com.abernathyclinic.patientservice.dto.InitDto;
-import com.abernathyclinic.patientservice.model.Patient;
 import com.abernathyclinic.patientservice.service.InitService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -39,7 +38,7 @@ public class PatientServiceApplication {
       // Load data from data.json at startup of application
       LOGGER.info("Load data from data.json file");
       LOGGER.info("-------------------------------");
-      ObjectMapper mapper = new ObjectMapper();
+      var mapper = new ObjectMapper();
       initService.init(mapper.readValue(dataResourceFile.getFile(), InitDto.class));
       LOGGER.info("Datas are loaded successfully.");
     };
