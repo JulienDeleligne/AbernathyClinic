@@ -34,7 +34,6 @@ public class NoteController {
         .collect(Collectors.toList());
   }
 
-
   @GetMapping(value = "/notes/patient/{patient}")
   public List<NoteDto> findNotesByPatient(@PathVariable String patient) {
     return noteService.findNotesByPatient(patient).stream().map(noteConvertor::convertToNoteDto).collect(

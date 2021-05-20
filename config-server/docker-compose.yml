@@ -1,0 +1,72 @@
+---
+  version: '3.8'
+
+  services:
+    mongodb:
+      image : mongo
+      container_name: mongodb
+      ports:
+          - 27017:27017
+
+    config-server:
+      image: abernathyclinic/config-server:latest
+      ports:
+       - 9101:9101
+      healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:9101/actuator/health"]
+        interval: 10s
+        timeout: 200s
+        retries: 20
+
+    eureka-service:
+      image: abernathyclinic/eureka:latest
+      depends_on:
+        config-server:
+          condition: service_healthy
+      ports:
+        - 9102:9102
+      healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:9102/actuator/health"]
+        interval: 10s
+        timeout: 200s
+        retries: 20
+
+    note-service:
+      image: abernathyclinic/note-service:latest
+      depends_on:
+        config-server:
+          condition: service_healthy
+        eureka-service:
+          condition: service_healthy
+      ports:
+        - 8082:8082
+
+    patient-service:
+      image: abernathyclinic/patient-service:latest
+      depends_on:
+        config-server:
+          condition: service_healthy
+        eureka-service:
+          condition: service_healthy
+      ports:
+        - 8081:8081
+
+    diabetic-service:
+      image: abernathyclinic/diabetic-calculator-service:latest
+      depends_on:
+        config-server:
+          condition: service_healthy
+        eureka-service:
+          condition: service_healthy
+      ports:
+        - 8080:8080
+
+    clientui-service:
+      image: abernathyclinic/client-ui:latest
+      depends_on:
+        config-server:
+          condition: service_healthy
+        eureka-service:
+          condition: service_healthy
+      ports:
+        - 8084:8084

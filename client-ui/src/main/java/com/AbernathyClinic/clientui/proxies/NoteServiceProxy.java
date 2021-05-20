@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "note-service", url = "localhost:8082")
+@FeignClient(name = "note-service", url = "note-service:8082")
 public interface NoteServiceProxy {
 
   @GetMapping(value = "/note/{id}")
