@@ -45,14 +45,15 @@ public class NoteController {
   }
 
   @GetMapping("/note/add/{patId}/{patient}")
-  public String addNoteForm(@PathVariable Integer patId, @PathVariable String patient, NoteBean note, Model model) {
+  public String addNoteForm(@PathVariable("patId") Integer patId, @PathVariable("patient") String patient,
+      NoteBean note, Model model) {
     model.addAttribute("patId", patId);
     model.addAttribute("patient", patient);
     return "note/add";
   }
 
   @PostMapping("/note/validate/{patId}")
-  public String validate(@PathVariable Integer patId, @Valid NoteBean note, BindingResult result, Model model) {
+  public String validate(@PathVariable("patId") Integer patId, @Valid NoteBean note, BindingResult result, Model model) {
     if (result.hasErrors()) {
       return "note/add";
     }

@@ -11,7 +11,7 @@ public class NoteConvertor {
   }
 
   public Note convertToNote(NoteDto noteDto) {
-    return Note.builder().patId(noteDto.getPatId()).patient(noteDto.getPatient()).recommendations(
+    return Note.builder().id(noteDto.getId()).patId(noteDto.getPatId()).patient(noteDto.getPatient()).recommendations(
         noteDto.getRecommendations()).build();
   }
 }

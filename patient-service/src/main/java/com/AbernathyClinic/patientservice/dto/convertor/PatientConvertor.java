@@ -18,8 +18,9 @@ public class PatientConvertor {
   }
 
   public static Patient convertToPatient(PatientDto patientDto) {
-    return Patient.builder().family(patientDto.getFamily()).given(patientDto.getGiven()).birthdate(
-        LocalDate.parse(patientDto.getDob(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+    return Patient.builder().id(patientDto.getId()).family(patientDto.getFamily()).given(patientDto.getGiven())
+        .birthdate(
+            LocalDate.parse(patientDto.getDob(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
         .sex(patientDto.getSex()).address(patientDto.getAddress()).phone(patientDto.getPhone()).build();
   }
 }
