@@ -24,8 +24,8 @@ class NoteServiceTest {
   @Mock
   NoteRepository noteRepository;
 
-  Note note = Note.builder().id("1").patId(1).patient("Smith").recommendations("nada").build();
-  List<Note> noteList = List.of(Note.builder().id("1").patId(1).patient("Smith").recommendations("nada").build(),
+  final Note note = Note.builder().id("1").patId(1).patient("Smith").recommendations("nada").build();
+  final List<Note> noteList = List.of(Note.builder().id("1").patId(1).patient("Smith").recommendations("nada").build(),
       Note.builder().id("2").patId(1).patient("Smith").recommendations("a lot").build());
 
   @Test
