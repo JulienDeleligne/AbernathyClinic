@@ -1,9 +1,11 @@
 package com.AbernathyClinic.diabeticcalculatorservice.bean;
 
 import java.time.LocalDate;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class PatientBean {
 
   private int id;

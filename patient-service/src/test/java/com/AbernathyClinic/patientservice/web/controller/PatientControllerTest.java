@@ -9,14 +9,14 @@ import com.abernathyclinic.patientservice.dto.PatientDto;
 import com.abernathyclinic.patientservice.model.Patient;
 import com.abernathyclinic.patientservice.service.PatientService;
 import java.time.LocalDate;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-
-public class PatientControllerTest {
+@ExtendWith(MockitoExtension.class)
+class PatientControllerTest {
 
   @InjectMocks
   PatientController patientController;
@@ -28,13 +28,8 @@ public class PatientControllerTest {
   Patient patient = Patient.builder().id(1).family("John").given("Smith").birthdate(LocalDate.of(2000, 10, 31)).sex("M")
       .address("home").phone("111").build();
 
-  @BeforeEach
-  void init_mocks() {
-    MockitoAnnotations.initMocks(this);
-  }
-
   @Test
-  public void patientListTest() {
+  void patientListTest() {
     //ACT
     patientController.patientList();
     //ASSERT
@@ -42,7 +37,7 @@ public class PatientControllerTest {
   }
 
   @Test
-  public void findPatientByIdTest() {
+  void findPatientByIdTest() {
     //ARRANGE
     when(patientService.findPatientById(1)).thenReturn(patient);
     //ACT
@@ -52,7 +47,7 @@ public class PatientControllerTest {
   }
 
   @Test
-  public void saveTest() {
+  void saveTest() {
     //ARRANGE
     when(patientService.save(patient)).thenReturn(patient);
     //ACT
@@ -62,7 +57,7 @@ public class PatientControllerTest {
   }
 
   @Test
-  public void updateTest() {
+  void updateTest() {
     //ARRANGE
     when(patientService.findPatientById(1)).thenReturn(patient);
     when(patientService.update(any(), any())).thenReturn(patient);
@@ -73,7 +68,7 @@ public class PatientControllerTest {
   }
 
   @Test
-  public void deleteTest() {
+  void deleteTest() {
     //ACT
     patientController.delete(1);
     //ASSERT

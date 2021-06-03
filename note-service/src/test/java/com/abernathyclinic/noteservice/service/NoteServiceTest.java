@@ -10,12 +10,13 @@ import com.abernathyclinic.noteservice.model.Note;
 import com.abernathyclinic.noteservice.repository.NoteRepository;
 import java.util.List;
 import java.util.Optional;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class NoteServiceTest {
 
   @InjectMocks
@@ -26,11 +27,6 @@ class NoteServiceTest {
   Note note = Note.builder().id("1").patId(1).patient("Smith").recommendations("nada").build();
   List<Note> noteList = List.of(Note.builder().id("1").patId(1).patient("Smith").recommendations("nada").build(),
       Note.builder().id("2").patId(1).patient("Smith").recommendations("a lot").build());
-
-  @BeforeEach
-  void init_mocks() {
-    MockitoAnnotations.initMocks(this);
-  }
 
   @Test
   void findNoteByIdTest() {

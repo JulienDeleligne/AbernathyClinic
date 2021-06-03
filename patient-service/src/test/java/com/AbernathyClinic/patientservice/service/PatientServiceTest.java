@@ -11,13 +11,14 @@ import com.abernathyclinic.patientservice.repository.PatientRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-public class PatientServiceTest {
+@ExtendWith(MockitoExtension.class)
+class PatientServiceTest {
 
   @InjectMocks
   PatientService patientService;
@@ -32,13 +33,8 @@ public class PatientServiceTest {
   Patient patient = Patient.builder().id(1).family("John").given("Smith").birthdate(LocalDate.of(2000, 10, 31)).sex("M")
       .address("home").phone("111").build();
 
-  @BeforeEach
-  void init_mocks() {
-    MockitoAnnotations.initMocks(this);
-  }
-
   @Test
-  public void patientListTest() {
+  void patientListTest() {
     //ARRANGE
     when(patientRepository.findAll()).thenReturn(patientList);
     //ASSERT
@@ -46,7 +42,7 @@ public class PatientServiceTest {
   }
 
   @Test
-  public void findPatientByIdTest() {
+  void findPatientByIdTest() {
     //ARRANGE
     when(patientRepository.findById(1)).thenReturn(Optional.of(patient));
     //ASSERT
@@ -54,7 +50,7 @@ public class PatientServiceTest {
   }
 
   @Test
-  public void saveTest() {
+  void saveTest() {
     //ACT
     patientService.save(patient);
     //ASSERT
@@ -62,7 +58,7 @@ public class PatientServiceTest {
   }
 
   @Test
-  public void savesTest() {
+  void savesTest() {
     //ACT
     patientService.saves(patientList);
     //ASSERT
@@ -70,7 +66,7 @@ public class PatientServiceTest {
   }
 
   @Test
-  public void updateTest() {
+  void updateTest() {
     //ARRANGE
     when(patientRepository.findById(1)).thenReturn(Optional.of(patient));
     //ACT
@@ -80,7 +76,7 @@ public class PatientServiceTest {
   }
 
   @Test
-  public void deleteTest() {
+  void deleteTest() {
     //ARRANGE
     when(patientRepository.findById(1)).thenReturn(Optional.of(patient));
     //ACT

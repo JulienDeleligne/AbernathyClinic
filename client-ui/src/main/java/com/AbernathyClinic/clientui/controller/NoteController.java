@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class NoteController {
 
-  final Logger log = LoggerFactory.getLogger(this.getClass());
+  private final Logger log = LoggerFactory.getLogger(this.getClass());
   @Autowired
   private NoteServiceProxy noteServiceProxy;
 
   @RequestMapping(value = "/note/list/patId/{patId}")
-  public String listNotePatIdPathVariable(@PathVariable Integer patId, Model model) {
+  public String listNotePatIdPathVariable(@PathVariable("patId") Integer patId, Model model) {
     log.info("Request to note-service");
     var notes = noteServiceProxy.findNotesByPatId(patId);
     model.addAttribute("notes", notes);

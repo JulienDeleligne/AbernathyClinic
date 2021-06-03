@@ -17,14 +17,14 @@ public interface PatientServiceProxy {
   List<PatientBean> patientList();
 
   @GetMapping(value = "/patient/{id}")
-  PatientBean findPatientById(@PathVariable Integer id);
+  PatientBean findPatientById(@PathVariable("id") Integer id);
 
   @PostMapping(value = "/patient/add")
   PatientBean save(@RequestBody PatientBean patient);
 
   @PutMapping(value = "/patient/update/{id}")
-  PatientBean update(@RequestBody PatientBean patient, @PathVariable Integer id);
+  PatientBean update(@RequestBody PatientBean patient, @PathVariable("id") Integer id);
 
   @DeleteMapping(value = "/patient/delete/{id}")
-  void delete(@PathVariable Integer id);
+  void delete(@PathVariable("id") Integer id);
 }

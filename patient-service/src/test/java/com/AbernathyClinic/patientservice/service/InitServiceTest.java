@@ -6,14 +6,14 @@ import static org.mockito.Mockito.verify;
 
 import com.abernathyclinic.patientservice.dto.InitDto;
 import com.abernathyclinic.patientservice.dto.PatientDto;
-import com.abernathyclinic.patientservice.repository.PatientRepository;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class InitServiceTest {
 
   @InjectMocks
@@ -26,11 +26,6 @@ class InitServiceTest {
               .address("home").phone("111").build(),
           PatientDto.builder().id(1).family("Jenna").given("Gordon").dob("1990-10-31").sex("F")
               .address("work").phone("222").build());
-
-  @BeforeEach
-  void init_mocks() {
-    MockitoAnnotations.initMocks(this);
-  }
 
   @Test
   void initTest() {

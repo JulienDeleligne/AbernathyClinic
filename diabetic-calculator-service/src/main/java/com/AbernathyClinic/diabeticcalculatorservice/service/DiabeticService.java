@@ -53,11 +53,11 @@ public class DiabeticService {
       assess = "In Danger";
     } else if (patient.getAge() >= 30 && result >= 2) {
       assess = "Borderline";
-    } else if (patient.getSex().equals("M") && patient.getAge() < 30 && result >= 5
-        || patient.getSex().equals("F") && patient.getAge() < 30 && result >= 7) {
+    } else if ("M".equals(patient.getSex()) && patient.getAge() < 30 && result >= 5
+        || "F".equals(patient.getSex()) && patient.getAge() < 30 && result >= 7) {
       assess = "Early onset";
-    } else if (patient.getSex().equals("M") && patient.getAge() < 30 && result >= 3
-        || patient.getSex().equals("F") && patient.getAge() < 30 && result >= 4) {
+    } else if ("M".equals(patient.getSex()) && patient.getAge() < 30 && result >= 3
+        || "F".equals(patient.getSex()) && patient.getAge() < 30 && result >= 4) {
       assess = "Danger";
     }
     patient.setResult("diabetes assessment is: " + assess);

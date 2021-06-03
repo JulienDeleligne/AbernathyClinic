@@ -5,23 +5,19 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.abernathyclinic.noteservice.repository.NoteRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class InitServiceTest {
 
   @InjectMocks
   InitService initService;
   @Mock
   NoteRepository noteRepository;
-
-  @BeforeEach
-  void init_mocks() {
-    MockitoAnnotations.initMocks(this);
-  }
 
   @Test
   void initTest() {
