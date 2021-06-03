@@ -19,14 +19,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class NoteServiceTest {
 
+  final Note note = Note.builder().id("1").patId(1).patient("Smith").recommendations("nada").build();
+  final List<Note> noteList = List.of(Note.builder().id("1").patId(1).patient("Smith").recommendations("nada").build(),
+      Note.builder().id("2").patId(1).patient("Smith").recommendations("a lot").build());
   @InjectMocks
   NoteService noteService;
   @Mock
   NoteRepository noteRepository;
-
-  final Note note = Note.builder().id("1").patId(1).patient("Smith").recommendations("nada").build();
-  final List<Note> noteList = List.of(Note.builder().id("1").patId(1).patient("Smith").recommendations("nada").build(),
-      Note.builder().id("2").patId(1).patient("Smith").recommendations("a lot").build());
 
   @Test
   void findNoteByIdTest() {
