@@ -6,7 +6,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.abernathyclinic.noteservice.dto.NoteDto;
 import com.abernathyclinic.noteservice.model.Note;
 import com.abernathyclinic.noteservice.repository.NoteRepository;
 import java.util.List;
@@ -17,7 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-public class NoteServiceTest {
+class NoteServiceTest {
 
   @InjectMocks
   NoteService noteService;
@@ -34,7 +33,7 @@ public class NoteServiceTest {
   }
 
   @Test
-  public void findNoteByIdTest() {
+  void findNoteByIdTest() {
     //ARRANGE
     when(noteRepository.findById("1")).thenReturn(Optional.of(note));
     //ASSERT
@@ -42,7 +41,7 @@ public class NoteServiceTest {
   }
 
   @Test
-  public void findNoteByPatIdTest() {
+  void findNoteByPatIdTest() {
     //ARRANGE
     when(noteRepository.findAllByPatId(1)).thenReturn(noteList);
     //ASSERT
@@ -50,7 +49,7 @@ public class NoteServiceTest {
   }
 
   @Test
-  public void findNotesByPatientTest() {
+  void findNotesByPatientTest() {
     //ARRANGE
     when(noteRepository.findAllByPatient("Smith")).thenReturn(noteList);
     //ASSERT
@@ -58,7 +57,7 @@ public class NoteServiceTest {
   }
 
   @Test
-  public void saveTest() {
+  void saveTest() {
     //ACT
     noteService.save(note);
     //ASSERT
@@ -66,7 +65,7 @@ public class NoteServiceTest {
   }
 
   @Test
-  public void updateTest() {
+  void updateTest() {
     //ARRANGE
     when(noteRepository.findById("1")).thenReturn(Optional.of(note));
     //ACT
@@ -76,7 +75,7 @@ public class NoteServiceTest {
   }
 
   @Test
-  public void deleteTest() {
+  void deleteTest() {
     //ARRANGE
     when(noteRepository.findById("1")).thenReturn(Optional.of(note));
     //ACT

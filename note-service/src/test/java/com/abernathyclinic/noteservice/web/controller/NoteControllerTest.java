@@ -16,7 +16,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 
-public class NoteControllerTest {
+class NoteControllerTest {
 
   @InjectMocks
   NoteController noteController;
@@ -34,7 +34,7 @@ public class NoteControllerTest {
   }
 
   @Test
-  public void findNoteByIdTest() {
+  void findNoteByIdTest() {
     //ARRANGE
     when(noteService.findNoteById("1")).thenReturn(note);
     //ACT
@@ -44,7 +44,7 @@ public class NoteControllerTest {
   }
 
   @Test
-  public void findNoteByPatIdTest() {
+  void findNoteByPatIdTest() {
     //ARRANGE
     when(noteService.findNotesByPatId(1)).thenReturn(noteList);
     //ACT
@@ -54,7 +54,7 @@ public class NoteControllerTest {
   }
 
   @Test
-  public void findNotesByPatientTest() {
+  void findNotesByPatientTest() {
     //ARRANGE
     when(noteService.findNotesByPatient("Smith")).thenReturn(noteList);
     //ACT
@@ -64,7 +64,7 @@ public class NoteControllerTest {
   }
 
   @Test
-  public void saveTest() {
+  void saveTest() {
     //ARRANGE
     when(noteService.save(note)).thenReturn(note);
     //ACT
@@ -74,7 +74,7 @@ public class NoteControllerTest {
   }
 
   @Test
-  public void updateTest() {
+  void updateTest() {
     //ARRANGE
     when(noteService.findNoteById("1")).thenReturn(note);
     when(noteService.update(any(), any())).thenReturn(note);
@@ -85,7 +85,7 @@ public class NoteControllerTest {
   }
 
   @Test
-  public void deleteTest() {
+  void deleteTest() {
     //ACT
     noteController.delete("1");
     //ASSERT

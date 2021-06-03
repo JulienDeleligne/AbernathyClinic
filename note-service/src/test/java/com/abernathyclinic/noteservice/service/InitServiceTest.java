@@ -11,7 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-public class InitServiceTest {
+class InitServiceTest {
 
   @InjectMocks
   InitService initService;
@@ -24,7 +24,7 @@ public class InitServiceTest {
   }
 
   @Test
-  public void initTest() {
+  void initTest() {
     //ACT
     initService.init();
     //ASSERT

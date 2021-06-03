@@ -6,9 +6,7 @@ import static org.mockito.Mockito.verify;
 
 import com.abernathyclinic.patientservice.dto.InitDto;
 import com.abernathyclinic.patientservice.dto.PatientDto;
-import com.abernathyclinic.patientservice.model.Patient;
 import com.abernathyclinic.patientservice.repository.PatientRepository;
-import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,14 +14,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-public class InitServiceTest {
+class InitServiceTest {
 
   @InjectMocks
   InitService initService;
   @Mock
   PatientService patientService;
-  @Mock
-  PatientRepository patientRepository;
 
   List<PatientDto> patientList = List
       .of(PatientDto.builder().id(1).family("John").given("Smith").dob("2000-10-31").sex("M")
@@ -37,7 +33,7 @@ public class InitServiceTest {
   }
 
   @Test
-  public void initTest(){
+  void initTest() {
     //ACT
     initService.init(InitDto.builder().patients(patientList).build());
     //ASSERT
