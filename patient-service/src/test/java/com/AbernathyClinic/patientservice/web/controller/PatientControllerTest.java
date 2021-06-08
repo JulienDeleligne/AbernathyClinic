@@ -18,15 +18,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class PatientControllerTest {
 
+  final PatientDto patientDto = PatientDto.builder().id(1).family("John").given("Smith").dob("2000-10-31").sex("M")
+      .address("home").phone("111").build();
+  final Patient patient = Patient.builder().id(1).family("John").given("Smith").birthdate(LocalDate.of(2000, 10, 31))
+      .sex("M")
+      .address("home").phone("111").build();
   @InjectMocks
   PatientController patientController;
   @Mock
   PatientService patientService;
-
-  PatientDto patientDto = PatientDto.builder().id(1).family("John").given("Smith").dob("2000-10-31").sex("M")
-      .address("home").phone("111").build();
-  Patient patient = Patient.builder().id(1).family("John").given("Smith").birthdate(LocalDate.of(2000, 10, 31)).sex("M")
-      .address("home").phone("111").build();
 
   @Test
   void patientListTest() {
@@ -59,7 +59,6 @@ class PatientControllerTest {
   @Test
   void updateTest() {
     //ARRANGE
-    when(patientService.findPatientById(1)).thenReturn(patient);
     when(patientService.update(any(), any())).thenReturn(patient);
     //ACT
     patientController.update(patientDto, 1);

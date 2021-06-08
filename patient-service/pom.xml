@@ -17,6 +17,8 @@
 		<java.version>16</java.version>
 		<spring-cloud.version>2020.0.2</spring-cloud.version>
 		<jib.version>3.0.0</jib.version>
+		<springfox.version>3.0.0</springfox.version>
+		<maven-site.version>3.7.1</maven-site.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -63,6 +65,11 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -79,6 +86,11 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>${maven-site.version}</version>
+			</plugin>
 			<plugin>
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>jib-maven-plugin</artifactId>

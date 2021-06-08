@@ -20,18 +20,18 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class PatientServiceTest {
 
-  @InjectMocks
-  PatientService patientService;
-  @Mock
-  PatientRepository patientRepository;
-
-  List<Patient> patientList = List
+  final List<Patient> patientList = List
       .of(Patient.builder().id(1).family("John").given("Smith").birthdate(LocalDate.of(2000, 10, 31)).sex("M")
               .address("home").phone("111").build(),
           Patient.builder().id(1).family("Jenna").given("Gordon").birthdate(LocalDate.of(2000, 10, 31)).sex("F")
               .address("work").phone("222").build());
-  Patient patient = Patient.builder().id(1).family("John").given("Smith").birthdate(LocalDate.of(2000, 10, 31)).sex("M")
+  final Patient patient = Patient.builder().id(1).family("John").given("Smith").birthdate(LocalDate.of(2000, 10, 31))
+      .sex("M")
       .address("home").phone("111").build();
+  @InjectMocks
+  PatientService patientService;
+  @Mock
+  PatientRepository patientRepository;
 
   @Test
   void patientListTest() {

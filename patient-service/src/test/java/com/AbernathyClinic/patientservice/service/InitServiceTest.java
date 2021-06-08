@@ -16,16 +16,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class InitServiceTest {
 
-  @InjectMocks
-  InitService initService;
-  @Mock
-  PatientService patientService;
-
-  List<PatientDto> patientList = List
+  final List<PatientDto> patientList = List
       .of(PatientDto.builder().id(1).family("John").given("Smith").dob("2000-10-31").sex("M")
               .address("home").phone("111").build(),
           PatientDto.builder().id(1).family("Jenna").given("Gordon").dob("1990-10-31").sex("F")
               .address("work").phone("222").build());
+  @InjectMocks
+  InitService initService;
+  @Mock
+  PatientService patientService;
 
   @Test
   void initTest() {

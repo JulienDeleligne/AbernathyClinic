@@ -14,10 +14,12 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 @EnableConfigurationProperties
 @EnableDiscoveryClient
+@EnableWebMvc
 public class PatientServiceApplication {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(PatientServiceApplication.class);

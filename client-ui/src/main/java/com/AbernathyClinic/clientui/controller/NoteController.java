@@ -53,7 +53,8 @@ public class NoteController {
   }
 
   @PostMapping("/note/validate/{patId}")
-  public String validate(@PathVariable("patId") Integer patId, @Valid NoteBean note, BindingResult result, Model model) {
+  public String validate(@PathVariable("patId") Integer patId, @Valid NoteBean note, BindingResult result,
+      Model model) {
     if (result.hasErrors()) {
       return "note/add";
     }
