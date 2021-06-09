@@ -4,7 +4,7 @@
 <head>
   <meta charset='utf-8'/>
   <title>Home</title>
-  <link href='/css/bootstrap.min.css' rel='stylesheet'>
+  <link href='/../css/bootstrap.min.css' rel='stylesheet'>
 </head>
 <body>
 <div class='container'>
@@ -14,7 +14,7 @@
   </div>
 
   <div class='row'>
-    <form action='#' class='form-horizontal' method='post' style='width: 100%' th:action='@{/validate}'
+    <form action='#' class='form-horizontal' method='post' style='width: 100%' th:action='@{/patient/validate}'
           th:object='${patientBean}'>
       <div class='form-group'>
         <label class='col-sm-2 control-label' for='family'>Family</label>
@@ -60,7 +60,7 @@
       </div>
       <div class='form-group'>
         <div class='col-sm-12'>
-          <a class='btn btn-danger btn-sm' href='/list'>Cancel</a>
+          <a class='btn btn-danger btn-sm' href='/patient/list'>Cancel</a>
           <input class='btn btn-primary btn-sm' type='submit' value='Add Patient'>
         </div>
       </div>

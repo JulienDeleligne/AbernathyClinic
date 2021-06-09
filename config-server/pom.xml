@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>16</java.version>
 		<spring-cloud.version>2020.0.2</spring-cloud.version>
+		<jib.version>3.0.0</jib.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -43,6 +44,24 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>${jib.version}</version>
+				<configuration>
+					<to>
+						<image>abernathyclinic/${project.artifactId}</image>
+					</to>
+					<from>
+						<image>openjdk:16</image>
+					</from>
+					<container>
+						<ports>
+							<port>9101</port>
+						</ports>
+					</container>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

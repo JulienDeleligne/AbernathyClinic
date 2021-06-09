@@ -1,6 +1,6 @@
-package com.AbernathyClinic.patientservice.repository;
+package com.abernathyclinic.patientservice.repository;
 
-import com.AbernathyClinic.patientservice.model.Patient;
+import com.abernathyclinic.patientservice.model.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

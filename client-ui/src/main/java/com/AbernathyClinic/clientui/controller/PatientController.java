@@ -2,7 +2,6 @@ package com.abernathyclinic.clientui.controller;
 
 import com.abernathyclinic.clientui.beans.PatientBean;
 import com.abernathyclinic.clientui.proxies.PatientServiceProxy;
-import java.time.LocalDate;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,63 +15,61 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ClientController {
+public class PatientController {
 
-  final Logger log = LoggerFactory.getLogger(this.getClass());
+  private final Logger log = LoggerFactory.getLogger(this.getClass());
   @Autowired
   private PatientServiceProxy patientServiceProxy;
 
-  @RequestMapping("/")
+  @RequestMapping("/patient")
   public String accueil(Model model) {
     log.info("Request to patient-service");
     model.addAttribute("patients", patientServiceProxy.patientList());
-    model.addAttribute("localDate", LocalDate.now());
-    return "list";
+    return "patient/list";
   }
 
-  @RequestMapping("/list")
+  @RequestMapping("/patient/list")
   public String home(Model model) {
     model.addAttribute("patients", patientServiceProxy.patientList());
-    model.addAttribute("localDate", LocalDate.now());
-    return "list";
+    return "patient/list";
   }
 
-  @GetMapping("/add")
-  public String addBidForm(PatientBean patient) {
-    return "add";
+  @GetMapping("/patient/add")
+  public String addPatientForm(PatientBean patient) {
+    return "patient/add";
   }
 
-  @PostMapping("/validate")
+  @PostMapping("/patient/validate")
   public String validate(@Valid PatientBean patient, BindingResult result, Model model) {
     if (result.hasErrors()) {
-      return "add";
+      return "patient/add";
     }
     patientServiceProxy.save(patient);
     model.addAttribute("patients", patientServiceProxy.patientList());
-    return "redirect:/list";
+    return "redirect:/patient/list";
   }
 
-  @GetMapping("/update/{id}")
+  @GetMapping("/patient/update/{id}")
   public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
     model.addAttribute("patient", patientServiceProxy.findPatientById(id));
-    return "update";
+    return "patient/update";
   }
 
-  @PostMapping("/update/{id}")
+  @PostMapping("/patient/update/{id}")
   public String updateBid(@PathVariable("id") Integer id, @Valid PatientBean patient,
       BindingResult result, Model model) {
     if (result.hasErrors()) {
-      return "update";
+      return "patient/update";
     }
     patientServiceProxy.update(patient, id);
     model.addAttribute("patients", patientServiceProxy.patientList());
-    return "redirect:/list";
+    return "redirect:/patient/list";
   }
 
-  @GetMapping("/delete/{id}")
+  @GetMapping("/patient/delete/{id}")
   public String deleteBid(@PathVariable("id") Integer id, Model model) {
     patientServiceProxy.delete(id);
     model.addAttribute("patients", patientServiceProxy.patientList());
-    return "redirect:/list";
+    return "redirect:/patient/list";
   }
 }

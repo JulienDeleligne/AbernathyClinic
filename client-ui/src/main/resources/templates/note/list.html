@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml'
+      xmlns:th='http://www.thymeleaf.org'>
+
+<head>
+  <meta charset='utf-8'/>
+  <title>Home</title>
+  <link href='/../css/bootstrap.min.css' rel='stylesheet'>
+</head>
+<body>
+<div class='container'>
+  <div class='row'>
+    <div class='col-6'>
+      <a href='/home'>Menu</a>
+    </div>
+  </div>
+  <div class='row'><h2>Note's List for patient N°<span th:text='${notes[0].patId}'></span> - <span
+      th:text='${notes[0].patient}'></span></h2></div>
+  <div class='row'>
+    <a class='btn btn-primary btn-sm'
+       th:href='@{/note/add/{patId}/{patient}(patId=${notes[0].patId}, patient=${notes[0].patient})}'>Add New Note</a>
+    <table class='table table-bordered'>
+      <thead>
+      <tr>
+        <th>Recommendations</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each='note : ${notes}'>
+        <td th:text='${note.recommendations}'></td>
+        <td class='text-center' style='width: 15%'>
+          <a th:href='@{/note/update/{id}(id=${note.id})}'>Edit</a>&nbsp;|&nbsp;
+          <a th:href='@{/note/delete/{id}/{patId}(id=${note.id}, patId=${note.patId})}'>Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

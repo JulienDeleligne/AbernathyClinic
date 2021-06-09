@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <title> Abernathy Clinic </title>
+  <link href='/css/styles.css' rel='stylesheet'/>
+</head>
+<body>
+<div class='container'>
+
+  <div class='row'>
+    <h2>Menu</h2>
+  </div>
+
+  <div class='row'>
+    <h3>Patient List</h3>
+  </div>
+  <p>
+    <a href='/patient/list'>Go to the patient list</a>
+  </p>
+
+  <div class='row'>
+    <h3>Note</h3>
+  </div>
+
+  <form action='/note/list/patId' method='get'>
+    <div class='form-group'>
+      <label class='col-sm-2 control-label'>Search notes for a patient's Id</label>
+      <input name='patId' type='number'>
+      <input type='submit' value='Search'/>
+    </div>
+  </form>
+
+  <form action='/note/list/patient' method='get'>
+    <label>Search notes for a patient's name</label>
+    <input name='patient' type='text'>
+    <input type='submit' value='Search'/>
+  </form>
+
+  <div class='row'>
+    <h3>Assess Diabetic Risk</h3>
+  </div>
+
+  <form action='/diabetic/patId' method='get'>
+    <div class='form-group'>
+      <label class='col-sm-2 control-label'>Assess diabetic risk for a patient's Id</label>
+      <input name='patId' type='number'>
+      <input type='submit' value='Search'/>
+    </div>
+  </form>
+</div>
+</body>
+</html>

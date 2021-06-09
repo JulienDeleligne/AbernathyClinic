@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml'
+      xmlns:th='http://www.thymeleaf.org'>
+
+<head>
+  <meta charset='utf-8'/>
+  <title>Home</title>
+  <link href='/../css/bootstrap.min.css' rel='stylesheet'>
+</head>
+<body>
+<div class='container'>
+  <div class='row'>
+    <div class='col-6'>
+      <a href='/home'>Menu</a>
+    </div>
+  </div>
+  <div class='row'><h2>Diabetic Risk</h2></div>
+  <div class='row'>
+    <table class='table table-bordered'>
+      <thead>
+      <tr>
+        <th>Family</th>
+        <th>Given</th>
+        <th>Age</th>
+        <th>Risk level</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td th:text='${diabetic.family}'></td>
+        <td th:text='${diabetic.given}'></td>
+        <td th:text='${diabetic.age}'></td>
+        <td th:text='${diabetic.result}'></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

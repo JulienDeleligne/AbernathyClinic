@@ -1,9 +1,10 @@
-package com.AbernathyClinic.patientservice.web.controller;
+package com.abernathyclinic.patientservice.web.controller;
 
-import com.AbernathyClinic.patientservice.dto.PatientDto;
-import com.AbernathyClinic.patientservice.dto.convertor.PatientConvertor;
-import com.AbernathyClinic.patientservice.model.Patient;
-import com.AbernathyClinic.patientservice.service.PatientService;
+import com.abernathyclinic.patientservice.dto.PatientDto;
+import com.abernathyclinic.patientservice.dto.convertor.PatientConvertor;
+import com.abernathyclinic.patientservice.service.PatientService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
@@ -16,35 +17,40 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api("API for patient operations ")
 @RestController
 public class PatientController {
 
-  private final PatientConvertor patientConvertor = new PatientConvertor();
   @Autowired
   private PatientService patientService;
 
-  @GetMapping(value = "/patients")
-  public List<PatientDto> patientsList() {
-    return patientService.getAllPatient().stream().map(patientConvertor::convertToPatientDto).collect(
+  @ApiOperation(value = "Get a list of all patient")
+  @GetMapping(value = "/patient")
+  public List<PatientDto> patientList() {
+    return patientService.getAllPatient().stream().map(PatientConvertor::convertToPatientDto).collect(
         Collectors.toList());
   }
 
+  @ApiOperation(value = "Find a patient by ID")
   @GetMapping(value = "/patient/{id}")
   public PatientDto findPatientById(@PathVariable Integer id) {
-    return patientConvertor.convertToPatientDto(patientService.findPatientById(id));
+    return PatientConvertor.convertToPatientDto(patientService.findPatientById(id));
   }
 
-  @PostMapping(value = "/add")
+  @ApiOperation(value = "Add a patient")
+  @PostMapping(value = "/patient/add")
   public PatientDto save(@Valid @RequestBody PatientDto patient) {
-    return patientConvertor.convertToPatientDto(patientService.save(patientConvertor.convertToPatient(patient)));
+    return PatientConvertor.convertToPatientDto(patientService.save(PatientConvertor.convertToPatient(patient)));
   }
 
-  @PutMapping(value = "/update/{id}")
+  @ApiOperation(value = "Update a patient using his ID")
+  @PutMapping(value = "/patient/update/{id}")
   public PatientDto update(@Valid @RequestBody PatientDto patient, @PathVariable Integer id) {
-    return patientConvertor.convertToPatientDto(patientService.update(patientConvertor.convertToPatient(patient), id));
+    return PatientConvertor.convertToPatientDto(patientService.update(PatientConvertor.convertToPatient(patient), id));
   }
 
-  @DeleteMapping(value = "/delete/{id}")
+  @ApiOperation(value = "Delete a patient using his ID")
+  @DeleteMapping(value = "/patient/delete/{id}")
   public void delete(@PathVariable Integer id) {
     patientService.deleteById(id);
   }
